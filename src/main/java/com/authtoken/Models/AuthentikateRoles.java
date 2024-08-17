@@ -15,13 +15,13 @@ public class AuthentikateRoles {
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "authentikateusersroles", inverseJoinColumns = @JoinColumn(name = "userid"), joinColumns = @JoinColumn(name = "roleid"))
-    List<AuthentikateRoles> associatedRoleUsers;
+    List<AuthentikateUsers> associatedRoleUsers;
 
-    public List<AuthentikateRoles> getAssociatedRoleUsers() {
+    public List<AuthentikateUsers> getAssociatedRoleUsers() {
         return associatedRoleUsers;
     }
 
-    public void setAssociatedRoleUsers(List<AuthentikateRoles> associatedRoleUsers) {
+    public void setAssociatedRoleUsers(List<AuthentikateUsers> associatedRoleUsers) {
         this.associatedRoleUsers = associatedRoleUsers;
     }
 
