@@ -17,6 +17,17 @@ public class AuthentikateUsers {
     @Column(name = "userpassword")
     String userPassword;
 
+    /*@Transient
+    String userToken;
+
+    public String getUserToken() {
+        return userToken;
+    }
+
+    public void setUserToken(String userToken) {
+        this.userToken = userToken;
+    }*/
+
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "authentikateusersroles", joinColumns = @JoinColumn(name = "userid"), inverseJoinColumns = @JoinColumn(name = "roleid"))
     List<AuthentikateRoles> userRoles;

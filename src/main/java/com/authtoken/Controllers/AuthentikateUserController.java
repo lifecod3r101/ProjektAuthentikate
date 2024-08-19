@@ -14,6 +14,10 @@ import java.util.List;
 public class AuthentikateUserController {
     @Autowired
     AuthentikateUserRepository authentikateUserRepository;
+    /*@Autowired
+    AuthenticationManager authenticationManager;
+
+    AuthentikateTokenUtility tokenUtility;*/
 
     @GetMapping("/getAll")
     public ResponseEntity<List<AuthentikateUsers>> getAllUsers() {
@@ -34,10 +38,13 @@ public class AuthentikateUserController {
     @PostMapping("/signIn")
     public ResponseEntity<AuthentikateUsers> signInUser(@RequestParam("userEmail") String userEmail, @RequestParam("userPassword") String userPassword) {
         AuthentikateUsers signInUser = authentikateUserRepository.findByUserEmail(userEmail).getFirst();
-        if (signInUser.getUserEmail().equals(userEmail) && userPassword.equals(signInUser.getUserPassword())) {
-            return ResponseEntity.status(HttpStatus.OK).body(signInUser);
+        return ResponseEntity.status(HttpStatus.OK).body(signInUser);
+        /*if (signInUser.getUserEmail().equals(userEmail) && userPassword.equals(signInUser.getUserPassword())) {
+            *//*authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(signInUser.getUserEmail(), signInUser.getUserPassword()));
+            String token = tokenUtility.generateAuthentikateToken(signInUser);
+            signInUser.setUserToken(token);*//*
         } else {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
-        }
+        }*/
     }
 }
